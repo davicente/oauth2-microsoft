@@ -1,6 +1,7 @@
 <?php namespace Stevenmaguire\OAuth2\Client\Test\Provider;
 
 use League\OAuth2\Client\Tool\QueryBuilderTrait;
+use GuzzleHttp\Message\ResponseInterface;
 use Mockery as m;
 
 class MicrosoftTest extends \PHPUnit_Framework_TestCase
@@ -94,7 +95,7 @@ class MicrosoftTest extends \PHPUnit_Framework_TestCase
 
     public function testGetAccessToken()
     {
-        $response = m::mock('Psr\Http\Message\ResponseInterface');
+        $response = m::mock(ResponseInterface::class);
         $response->shouldReceive('getBody')->andReturn('{"access_token":"mock_access_token","authentication_token":"","code":"","expires_in":3600,"refresh_token":"mock_refresh_token","scope":"","state":"","token_type":""}');
         $response->shouldReceive('getHeader')->andReturn(['content-type' => 'json']);
 
@@ -120,15 +121,15 @@ class MicrosoftTest extends \PHPUnit_Framework_TestCase
         $userId = rand(1000,9999);
         $urls = uniqid();
 
-        $postResponse = m::mock('Psr\Http\Message\ResponseInterface');
+        $postResponse = m::mock(ResponseInterface::class);
         $postResponse->shouldReceive('getBody')->andReturn('{"access_token":"mock_access_token","authentication_token":"","code":"","expires_in":3600,"refresh_token":"mock_refresh_token","scope":"","state":"","token_type":""}');
         $postResponse->shouldReceive('getHeader')->andReturn(['content-type' => 'json']);
 
-        $userResponse = m::mock('Psr\Http\Message\ResponseInterface');
+        $userResponse = m::mock(ResponseInterface::class);
         $userResponse->shouldReceive('getBody')->andReturn('{"id": '.$userId.', "name": "'.$name.'", "first_name": "'.$firstname.'", "last_name": "'.$lastname.'", "emails": {"preferred": "'.$email.'"}, "link": "'.$urls.'"}');
         $userResponse->shouldReceive('getHeader')->andReturn(['content-type' => 'json']);
 
-        $imageResponse = m::mock('Psr\Http\Message\ResponseInterface');
+        $imageResponse = m::mock(ResponseInterface::class);
         $imageResponse->shouldReceive('getBody')->andReturn('{}');
         $imageResponse->shouldReceive('getHeader')->andReturn(['content-type' => 'json']);
 
@@ -166,15 +167,15 @@ class MicrosoftTest extends \PHPUnit_Framework_TestCase
         $userId = rand(1000,9999);
         $urls = uniqid();
 
-        $postResponse = m::mock('Psr\Http\Message\ResponseInterface');
+        $postResponse = m::mock(ResponseInterface::class);
         $postResponse->shouldReceive('getBody')->andReturn('{"access_token": "mock_access_token", "expires": 3600, "refresh_token": "mock_refresh_token", "uid": '.$userId.'}');
         $postResponse->shouldReceive('getHeader')->andReturn(['content-type' => 'json']);
 
-        $userResponse = m::mock('Psr\Http\Message\ResponseInterface');
+        $userResponse = m::mock(ResponseInterface::class);
         $userResponse->shouldReceive('getBody')->andReturn('{"id": '.$userId.', "name": "'.$name.'", "first_name": "'.$firstname.'", "last_name": "'.$lastname.'", "emails": {"preferred": "'.$email.'"}, "link": "'.$urls.'"}');
         $userResponse->shouldReceive('getHeader')->andReturn(['content-type' => 'json']);
 
-        $imageResponse = m::mock('Psr\Http\Message\ResponseInterface');
+        $imageResponse = m::mock(ResponseInterface::class);
         $imageResponse->shouldReceive('getBody')->andReturn('{"url":"'.$imageurl.'"}');
         $imageResponse->shouldReceive('getHeader')->andReturn(['content-type' => 'json']);
 
@@ -203,7 +204,7 @@ class MicrosoftTest extends \PHPUnit_Framework_TestCase
     {
         $message = uniqid();
 
-        $postResponse = m::mock('Psr\Http\Message\ResponseInterface');
+        $postResponse = m::mock(ResponseInterface::class);
         $postResponse->shouldReceive('getBody')->andReturn('{"error": {"code": "request_token_expired", "message": "'.$message.'"}}');
         $postResponse->shouldReceive('getHeader')->andReturn(['content-type' => 'json']);
         $postResponse->shouldReceive('getStatusCode')->andReturn(500);

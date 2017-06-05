@@ -7,6 +7,7 @@
 [![Software License](https://img.shields.io/packagist/l/stevenmaguire/oauth2-microsoft.svg?style=flat-square)](LICENSE.md)
 
 This package provides Microsoft OAuth 2.0 support for the PHP League's [OAuth 2.0 Client](https://github.com/thephpleague/oauth2-client).
+It uses Guzzle v5.3
 
 ## Installation
 

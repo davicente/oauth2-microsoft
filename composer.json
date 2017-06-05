@@ -1,12 +1,17 @@
 {
-    "name": "stevenmaguire/oauth2-microsoft",
-    "description": "Microsoft OAuth 2.0 Client Provider for The PHP League OAuth2-Client",
+    "name": "davicente/oauth2-microsoft",
+    "description": "Microsoft OAuth 2.0 Client Provider for The PHP League OAuth2-Client (with Guzzle v5.3)",
     "license": "MIT",
     "authors": [
         {
             "name": "Steven Maguire",
             "email": "stevenmaguire@gmail.com",
             "homepage": "https://github.com/stevenmaguire"
+        },
+        {
+            "name": "David Vicente",
+            "email": "davicentes@gmail.com",
+            "homepage": "https://github.com/davicente"
         }
     ],
     "keywords": [
@@ -18,7 +23,7 @@
         "microsoft"
     ],
     "require": {
-        "league/oauth2-client": "^2.0"
+        "davicente/oauth2-client": "^2.3"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0",
